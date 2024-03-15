@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_sales_template_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="br">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h1> SALES TICKET </h1>
+
+                        <div class="row">
+                            <div class="col-4">
+                                ID
+                            </div>
+                            <div class="col-8">
+                                <span t-field="br.ref_sales"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                QR CODE :
+                            </div>
+                            <div class="col-8">
+                                <img t-att-src="'data:image/png;base64,%s'%br.qr_code"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                Name
+                            </div>
+                            <div class="col-8">
+                                <span t-field="br.cust_id"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                Date of Transaction
+                            </div>
+                            <div class="col-8">
+                                <span t-field="br.date_trans"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                                <table  class="table table-striped">
+                                    <thead>
+                                        <th>
+                                            Event
+                                        </th>
+                                        <th>
+                                            Sales Mode
+                                        </th>
+                                        <th>
+                                            Admin
+                                        </th>
+                                        <th>
+                                            Unit Price
+                                        </th>
+                                        <th>
+                                            Discount Price
+                                        </th>
+                                        <th>
+                                            Quatity Ticket
+                                        </th>
+                                        <th>
+                                            Subtotal
+                                        </th>
+                                    </thead>
+
+                                    <t t-foreach="br.detailsales_ids" t-as="brs">
+                                        <tr>
+                                            <td><span t-esc='brs.event_name'/> </td>
+                                            <td><span t-esc='brs.sales_mode'/> </td>
+                                            <td><span t-esc='brs.admin'/> </td>
+                                            <td><span t-esc='brs.unit_price'/> </td>
+                                            <td><span t-esc='brs.disc_price'/> </td>
+                                            <td><span t-esc='brs.qty_payment'/></td>
+                                            <td><span t-esc='brs.subtotal'/></td>
+                                        </tr>
+                                    </t>
+                                </table>
+
+                        <div class="row">
+                            <div class="col-4">
+                                Subtotal
+                            </div>
+                            <div class="col-8">
+                                <span t-field="br.amount"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                Total Quantity
+                            </div>
+                            <div class="col-8">
+                                <span t-field="br.total_qty"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                Payment Method
+                            </div>
+                            <div class="col-8">
+                                <span t-field="br.payment_method"/>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- report_barang pdf window -->
+    <!-- <report
+        id="report_barang_pdf"
+        model="barang.doodex"
+        string="Report Order"
+        report_type="qweb-pdf"
+        name="minimartdoodex.report_template_barang_pdf"
+        file="minimartdoodex.report_template_barang_pdf"
+    /> -->
+
+</odoo>

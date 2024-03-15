@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- doodex_sales tree view -->
+    <record id="doodex_sales_view_tree" model="ir.ui.view">
+        <field name="name">LIST SALES</field>
+        <field name="model">doodex.sales</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="ref_sales"/>
+                <field name="cust_id"/>
+                <field name="date_trans"/>
+                <field name="amount"/>
+                <field name="total_qty" />
+                <field name="payment_method"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- doodex_sales form view -->
+    <record id="doodex_sales_view_form" model="ir.ui.view">
+        <field name="name">FORM SALES</field>
+        <field name="model">doodex.sales</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <button name="action_pending" type="object" string="confirm" states="confirm" confirm="Are you sure to confirmation this sales?" class="btn btn-success"/>
+                    <button name="action_paid" type="object" string="paid" states="pending" class="btn btn-primary"/>   
+                    <button name="%(eventmanagementnew.report_sales_pdf)d" type="action" states="paid" string="PRINT" icon="fa-print" class="btn btn-success"/>          
+                    <field name="state" widget="statusbar" statusbar_visible="confirm, pending, paid" />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1> 
+                            <field name="ref_sales" readonly="1"/>
+                        </h1>
+                    </div>
+                    <field name="qr_code" widget="image"/>
+
+                    <group name="Identity">
+                        <!-- Add your fields here -->
+                        <field name="cust_id" attrs="{'readonly':[('state','!=','confirm')]}"/>
+                        <field name="date_trans" attrs="{'readonly':[('state','!=','confirm')]}"/>
+                        
+                    </group>
+
+                    <group string="sales">
+                        <field name="detailsales_ids" attrs="{'readonly':[('state','!=','confirm')]}"> 
+                            <tree editable="bottom"> 
+                                <field name="event_id"/>
+                                <field name="event_name"/>
+                                <field name="sales_mode"/>
+                                <field name="admin"/>
+                                <field name="unit_price"/>
+                                <field name="disc_price"/>
+                                <field name="qty_payment"/>
+                                <field name="subtotal" sum='Amount'/>
+                    
+                            </tree>
+                        </field>
+                    </group>
+
+                    <group name="Pembelian">
+                        <!-- Add your fields here -->
+                        <field name="amount"/>
+                        <field name="total_qty" />
+                        <field name="payment_method" attrs="{'readonly':[('state','!=','pending')]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- doodex_sales action window -->
+    <record id="doodex_sales_action" model="ir.actions.act_window">
+        <field name="name">LIST SALES</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">doodex.sales</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="deticket_sales_menu_act"
+        name="List Sales"
+        action="doodex_sales_action"
+        parent="eventmanagement_event_menu_categ"
+        sequence="10"/>
+
+</odoo>

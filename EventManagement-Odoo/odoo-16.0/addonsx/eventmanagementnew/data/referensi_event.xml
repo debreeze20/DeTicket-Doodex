@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="seq_ref_ticket" model="ir.sequence">
+        <field name="name">Referensi Event</field>
+        <field name="code">referensi.event</field>
+        <field name="prefix">DE</field>
+        <field name="padding">5</field>
+        <field name="suffix">EVENT</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>

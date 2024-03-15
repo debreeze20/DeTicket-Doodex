@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- res.partner inherit tree view -->
+    <record id="res_partner_tree" model="ir.ui.view">
+        <field name="name">res.partner.inherit.view.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="string">Phone Number </attribute>                
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+
+            <xpath expr="//field[@name='activity_ids']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            <xpath expr="//field[@name='country_id']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            <xpath expr="//field[@name='city']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            <xpath expr="//field[@name='state_id']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            
+        </field>
+    </record>
+
+    <!-- res.partner inherit form view -->
+    <record id="res_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.inherit.view.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="string">Phone Number </attribute>                
+            </xpath>
+
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="invisible">1</attribute>                  
+            </xpath>
+
+            <xpath expr="//field[@name='country_id']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            <xpath expr="//field[@name='title']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            
+            <xpath expr="//field[@name='function']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            <xpath expr="//field[@name='company_type']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            <xpath expr="//field[@name='city']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+
+            <xpath expr="//field[@name='mobile']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+
+            <xpath expr="//field[@name='website']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+
+            <xpath expr="//field[@name='image_1920']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            <xpath expr="//notebook" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+
+            <xpath expr="//div[@class='oe_button_box']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+            
+            <xpath expr="//span[@class='o_form_label o_td_label']" position="attributes">
+                <attribute name="invisible">1</attribute>                
+            </xpath>
+
+
+
+        </field>
+    </record>
+
+    <!-- doodex_customer action window -->
+    <record id="doodex_customer_inherit_action" model="ir.actions.act_window">
+        <field name="name">DAFTAR CUSTOMER</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+        <menuitem
+        id="deticket_customer_inherit_menu_act"
+        name="Customer Inherit"
+        action="doodex_customer_inherit_action"
+        parent="eventmanagement_customer_menu_categ"
+        sequence="15"/>
+</odoo>

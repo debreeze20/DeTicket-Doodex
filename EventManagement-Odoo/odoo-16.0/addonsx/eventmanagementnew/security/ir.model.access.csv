@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_doodex_event,access.doodex.event,model_doodex_event,,1,1,1,1
+access_doodex_staff,access.doodex.staff,model_doodex_staff,,1,1,1,1
+access_doodex_venue,access.doodex.venue,model_doodex_venue,,1,1,1,1
+access_doodex_customer,access.doodex.customer,model_doodex_customer,,1,1,1,1
+access_doodex_sales,access.doodex.sales,model_doodex_sales,,1,1,1,1
+access_doodex_detailsales,access.doodex.detailsales,model_doodex_detailsales,,1,1,1,1

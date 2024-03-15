@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- doodex_customer tree view -->
+    <record id="doodex_customer_view_tree" model="ir.ui.view">
+        <field name="name">LIST CUSTOMER</field>
+        <field name="model">doodex.customer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="dob"/>
+                <field name="id_card"/>
+                <field name="gender"/>
+                <field name="ci"/>
+                <field name="sales_ids"/>                
+            </tree>
+        </field>
+    </record>
+
+    <!-- doodex_customer form view -->
+    <record id="doodex_customer_view_form" model="ir.ui.view">
+        <field name="name">FORM CUSTOMER</field>
+        <field name="model">doodex.customer</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="name"/>
+                        <field name="dob"/>
+                        <field name="id_card"/>
+                        <field name="gender"/>
+                        <field name="ci"/>
+                        <field name="sales_ids"/> 
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- doodex_customer action window -->
+    <record id="doodex_customer_action" model="ir.actions.act_window">
+        <field name="name">DAFTAR CUSTOMER</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">doodex.customer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- doodex_customer for menu header -->
+    <!-- <menuitem
+        id="deticket_customer_menu_act"
+        name="Customer"
+        action="doodex_customer_action"
+        parent="eventmanagement_customer_menu_categ"
+        sequence="10"/> -->
+
+</odoo>

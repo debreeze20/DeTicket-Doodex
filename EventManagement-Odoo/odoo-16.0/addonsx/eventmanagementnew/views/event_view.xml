@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- doodex_event tree view -->
+    <record id="doodex_event_view_tree" model="ir.ui.view">
+        <field name="name">LIST EVENT</field>
+        <field name="model">doodex.event</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="ref_event"/>
+                <field name="name" />
+                <field name="desc" />
+                <field name="name_venue" />
+                <field name="admin_name"/>
+                <field name="date" />
+                <field name="qty"/>
+                <field name="price"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- doodex_event form view -->
+    <record id="doodex_event_view_form" model="ir.ui.view">
+        <field name="name">FORM EVENT</field>
+        <field name="model">doodex.event</field>
+        <field name="arch" type="xml">
+            <form string="FORM DATA EVENT">
+
+                <!-- header for confirmation that event already ended -->
+                 <header>
+                    <button name="action_on" type="object" string="confirm" states="draft" class="btn btn-success oe_highlight"/>
+                    <button name="action_end" type="object" string="End" states="onprogress" class="btn btn-success"/>
+                    <button name="action_cancel" type="object" string="Cancel" states="onprogress" confirm="Is this event will be cancel?" class="btn btn-danger"/>
+                    <button name="action_draft" type="object" string="Back to Draft" states="cancel" confirm="Will this event be edited?" class="btn btn-info oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft, onprogress, endprogress" />
+                </header>
+
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="name" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="desc" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="venue_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="name_venue" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="sales_staff_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="admin_name" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="date" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="qty" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="price" attrs="{'readonly':[('state','!=','draft')]}"/>                      
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- doodex_event action window -->
+    <record id="doodex_event_action" model="ir.actions.act_window">
+        <field name="name">LIST EVENT</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">doodex.event</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="deticket_event_menu_act"
+        name="List Event"
+        action="doodex_event_action"
+        parent="eventmanagement_event_menu_categ"
+        sequence="1"/>
+
+</odoo>

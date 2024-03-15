@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="report_sales_pdf" model="ir.actions.report" >
+        <field name="name">Print Sales Report pdf</field>
+        <field name="model">doodex.sales</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">eventmanagementnew.report_sales_template_pdf</field>
+        <field name="report_file">eventmanagementnew.report_sales_template_pdf</field>
+        <field name="binding_model_id" ref="model_doodex_sales" />
+        <field name="binding_type">report</field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="eventmanagement_menu_root"
+        name="DeTicket"
+        sequence="10"/>
+
+        <menuitem
+        id="eventmanagement_event_menu_categ"
+        name="Event"
+        parent="eventmanagement_menu_root"
+        sequence="5"/>
+
+        <menuitem
+        id="eventmanagement_staff_menu_categ"
+        name="Staff"
+        parent="eventmanagement_menu_root"
+        sequence="15"/>
+
+        <menuitem
+        id="eventmanagement_customer_menu_categ"
+        name="Customer"
+        parent="eventmanagement_menu_root"
+        sequence="20"/>
+
+</odoo>

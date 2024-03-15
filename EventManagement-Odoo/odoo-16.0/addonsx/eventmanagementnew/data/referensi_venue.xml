@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="seq_ref_venue" model="ir.sequence">
+        <field name="name">Referensi Venue</field>
+        <field name="code">referensi.venue</field>
+        <field name="prefix">VE</field>
+        <field name="padding">4</field>
+        <field name="suffix">DE</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>

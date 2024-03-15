@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- doodex_venue tree view -->
+    <record id="doodex_venue_view_tree" model="ir.ui.view">
+        <field name="name">LIST VENUE</field>
+        <field name="model">doodex.venue</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="ref_venue" />
+                <field name="name" />
+                <field name="alamat" />
+                <field name="event_ids" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- doodex_venue form view -->
+    <record id="doodex_venue_view_form" model="ir.ui.view">
+        <field name="name">FORM VENUE</field>
+        <field name="model">doodex.venue</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <div class="oe_title">
+                        <h1> 
+                            <field name="ref_venue" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="name" />
+                        <field name="alamat" />
+                        <field name="event_ids" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- doodex_venue action window -->
+    <record id="doodex_venue_action" model="ir.actions.act_window">
+        <field name="name">VENUE</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">doodex.venue</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="deticket_venue_menu_act"
+        name="List Venue"
+        action="doodex_venue_action"
+        parent="eventmanagement_event_menu_categ"
+        sequence="10"/>
+
+</odoo>

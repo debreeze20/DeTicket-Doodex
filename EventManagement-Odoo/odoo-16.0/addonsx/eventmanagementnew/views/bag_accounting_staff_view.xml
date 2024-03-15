@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- doodex_accounting_staff tree view -->
+    <record id="doodex_accounting_staff_view_tree" model="ir.ui.view">
+        <field name="name">LIST ACCOUNTING STAFF</field>
+        <field name="model">doodex.staff</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="ref_staff" />
+                <field name="name" />
+                <field name="dof"/>
+                <field name="id_card"/>
+                <field name="address"/>
+                <field name="gender"/>
+                <field name="cp" />   
+                <field name="staff"/>
+                <field name="salary" />             
+                <!-- <field name="event_ids"/>                         -->
+            </tree>
+        </field>
+    </record>
+
+    <!-- doodex_accounting_staff form view -->
+    <record id="doodex_accounting_staff_view_form" model="ir.ui.view">
+        <field name="name">FORM ACCOUNTING STAFF </field>
+        <field name="model">doodex.staff</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <div class="oe_title">
+                        <h1> 
+                            <field name="ref_staff" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="name" />
+                        <field name="dof"/>
+                        <field name="id_card"/>
+                        <field name="address"/>
+                        <field name="gender"/>
+                        <field name="cp" />
+                        <field name="staff"/>
+                        <field name="salary" />                        
+                        <field name="event_ids" attrs="{'invisible':[('staff','!=','sales')]}"/>                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- doodex_accounting_staff action window -->
+    <record id="doodex_accounting_staff_action" model="ir.actions.act_window">
+        <field name="name">LIST ACCOUNTING STAFF</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">doodex.staff</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('bag','=','accounting')]</field>
+    </record>
+
+    <menuitem
+        id="deticket_accounting_staff_menu_act"
+        name="Accounting Staff"
+        action="doodex_accounting_staff_action"
+        parent="eventmanagement_staff_menu_categ"
+        sequence="15"/>
+
+</odoo>
